@@ -11,6 +11,7 @@ const PostList = () => {
       try {
         const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
         setPosts(response.data);
+        console.log(posts)
       } catch (error) {
         console.error('Error fetching posts:', error);
       }
@@ -23,10 +24,34 @@ const PostList = () => {
     <div>
       <h1>Posts</h1>
       <ul>
+        <table border="1">
+          <thead>
+            <td>Title</td>
+            <td>Description</td>
+          </thead>
+       
         {posts.map(post => (
-          <li key={post.id}>{post.title}</li>
+
+
+          <tbody>
+              <tr>
+                <td> 
+                  {post.title}
+                </td>
+                   <td> 
+                  {post.body}
+                </td>         
+         
+              </tr>
+           
+          </tbody>
+       
+
         ))}
+     
+      </table>
       </ul>
+
     </div>
   );
 };
